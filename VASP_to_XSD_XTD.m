@@ -1,4 +1,4 @@
-function VASPoutput_to_XSD_XTD
+function VASP_to_XSD_XTD
 %%  Code written by Geun Ho Gu
 %   University of Delaware
 %   December 30th, 2015
@@ -14,12 +14,12 @@ function VASPoutput_to_XSD_XTD
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Desktop\Checking\2-16\New folder\';
+input_fldr = 'C:\Users\Gu\Desktop\Checking\2-24\TotalEnergies\';
 convert_CONTCAR = 1;
 convert_XDATCAR = 0;
 convert_POSCAR = 0;
 %%% if turned on, will print energy if OSZICAR is found
-options.read_OSZICAR_and_include_energy_in_file_name = 1;
+options.read_OSZICAR_and_include_energy_in_file_name = 0;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initialize
 %%% Add the location of the matlab script as path
