@@ -59,7 +59,7 @@ for i=1:length(fields5)
 end
 
 fprintf(fidout,[newline '# ETC' newline]);
-all_fields = [fields1 fields2 fields3 fields4 fields5];
+all_fields = [fields1 fields2 fields3 fields4 fields5 'author'];
 for i=1:length(fields)
     match = strcmp(fields{i},all_fields);
     if ~any(match)

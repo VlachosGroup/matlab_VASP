@@ -1,3 +1,4 @@
+Copyright (c) 2014, Thomas Vanaret
 Copyright (c) 2009, Gus Brown
 All rights reserved.
 

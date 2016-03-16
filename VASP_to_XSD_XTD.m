@@ -14,10 +14,11 @@ function VASP_to_XSD_XTD
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Desktop\Checking\2-24\TotalEnergies\';
-convert_CONTCAR = 1;
+input_fldr = 'C:\Users\Gu\Desktop\Checking\3-16\H\';
+convert_CONTCAR = 0;
 convert_XDATCAR = 0;
-convert_POSCAR = 0;
+convert_POSCAR = 1;
+convert_NEB = 0;
 %%% if turned on, will print energy if OSZICAR is found
 options.read_OSZICAR_and_include_energy_in_file_name = 0;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -55,32 +56,15 @@ if convert_XDATCAR
     end
 end
 
-% % 
-% % if Mode == 3;
-%     d = dir(basefldr);
-%     isub = [d(:).isdir];
-%     nameFolds = {d(isub).name}';
-%     nameFolds(ismember(nameFolds,{'.','..'})) = [];
-%     Addtext(handles.statustext, 'Converting NEB images to xtd...')
-%     for i = 1:length(nameFolds)
-%         subfldr = [basefldr, char(nameFolds(i)), '\'];
-%         outfldr = subfldr;
-%         dd = dir(subfldr);
-%         for j = 1:length(dd)
-%             if strcmp(dd(j).name, 'CONTCAR') == 1
-%                  flname = 'CONTCAR';
-%                  break
-%             elseif strcmp(dd(j).name, 'POSCAR') == 1
-%                  flname = 'POSCAR';
-%             end
-%         end
-%         XSDFileOut = [char(nameFolds(i)) '.xsd'];
-%         [NAtoms,AtomElement,AtomPosition,n,AtomCur,AtomPos,Vec] = VASPConfigRead(subfldr,flname);
-%         AtomPosImages(:,:,:,i) = AtomPos;
-%     end
-%     XTDFileWrite([basefldr XTDFileout '_NEB.xtd'],n,AtomCur,AtomPosImages,Vec,10);
-% end
-
+if convert_NEB
+    flist = rdir([input_fldr '\**\00\POSCAR']);
+    for i=1:length(flist)
+        paths.input = flist(i).name;
+        slash_index = regexp(paths.input,'\');
+        paths.input = paths.input(1:slash_index(end-1));
+        VASP_NEBoutput_to_XTD(paths,options);      
+    end
+end
 
 
 end

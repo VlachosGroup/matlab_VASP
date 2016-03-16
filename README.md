@@ -5,11 +5,9 @@ The main function include:
 * KPOINTS vasp input write
 * POSCAR vasp input write
 * POTCAR vasp input write
-
 * POSCAR/XDATCAR vasp output read (VASP_Config_Read)
 * OSZICAR vasp output read
 * OUTCAR vibrational frequency read
-
 * XSD material studio file read
 * XSD material studio file write
 * XTD material studio animation file write
@@ -18,7 +16,7 @@ The repository also include outside code:
 * grep
 http://www.mathworks.com/matlabcentral/fileexchange/9647-grep--a-pedestrian--very-fast-grep-utility
 * rdir
-http://www.mathworks.com/matlabcentral/fileexchange/19550-recursive-directory-listing
+http://www.mathworks.com/matlabcentral/fileexchange/32226-recursive-directory-listing-enhanced-rdir
 
 TO DO:
   1. create NEB input

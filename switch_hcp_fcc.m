@@ -17,7 +17,7 @@
 %
 % 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
-input_fldr = 'C:\Users\Gu\Desktop\Checking\2-7\switch\';
+input_fldr = 'C:\Users\Gu\Desktop\Checking\3-15\switch\';
 metal = 'Pt';
 dirname = 'switched';
 adjust = 0;

@@ -5,7 +5,6 @@ function XTD_Write(XTDFileName,mol_data,MovieSpeed)
 % Version 3.0
 % 
 % Usage:
-% XTDFileWrite(XTDFileName,n,AtomCur,AtomPosImages,Vec,MovieSpeed)
 
 NAtoms = size(mol_data.positions,2);
 

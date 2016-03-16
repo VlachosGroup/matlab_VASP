@@ -20,7 +20,7 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'C:\Users\Gu\Desktop\Batches\2-12';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\3-15\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
 paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
