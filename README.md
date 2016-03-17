@@ -20,8 +20,8 @@ http://www.mathworks.com/matlabcentral/fileexchange/32226-recursive-directory-li
 
 TO DO:
   1. create NEB input
-  2. read vibrational frequency vector.
-  3. create vibration animation
+  2. create Lattice constant calculations
+  3. XYZ read and write
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
