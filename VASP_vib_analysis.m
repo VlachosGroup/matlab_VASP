@@ -1,14 +1,19 @@
-function VASP_to_XSD_XTD
+function VASP_vib_analysis
 %%  Code written by Geun Ho Gu
 %   University of Delaware
-%   December 30th, 2015
+%   3/17, 2016
 %
-%   Creates  XSD files. Requires rdir and grep functions
+%   function related to analyzing vibrational frequency result
+%   
 %
 %   Input:
-%       paths (that has CONTCAR POSCAR XDATCAR)
+%       paths (that has CONTCAR OUTCAR)
+%       option: 1 = read vibrational frequency
+%               2 = read vibrational frequency & and make vibration animation (xtd)
+%               3 = read vibrational frequency & and make vibration animation (xtd)
+%                   for the imaginary frequency only
 %   Output:
-%       Creates XSD files in the folder POSCAR/CONTCAR/XDATCAR is in
+%       See explanation above
 %
 % Script goes through all subfolders (including specified folders) and find
 % POSCAR/CONTCAR/XDATCAR and convert.

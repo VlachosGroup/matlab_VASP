@@ -15,38 +15,31 @@ for i=1:length(flist)
     end
 end
 %% Read image
+[mol_data] = VASP_Config_Read(image_path{1});
 positions = zeros(length(flist),size(mol_data.positions,1),3);
-for i=1:length(flist)
+positions(1,:,:) = mol_data.positions;
+for i=2:length(image_path)
     [mol_data] = VASP_Config_Read(image_path{i});
     positions(i,:,:) = mol_data.positions;
 end
 mol_data.positions = positions;
 
 %% Read OSZICAR & find the image with highest energy and record
-
-%%%%
-%% Read OSZICAR & set up name
 name = paths.input(slash_index(end-1)+1:slash_index(end)-1);
-if options.read_OSZICAR_and_include_energy_in_file_name && exist([paths.input(1:slash_index(end)) 'OSZICAR'],'file')
-    [E]=OSZICAR_Read([paths.input(1:slash_index(end)) 'OSZICAR']);
-    name = [name sprintf('%3.3f', E.total)];
+if options.read_OSZICAR_and_include_energy_in_file_name
+    for i=2:length(flist)-1
+        if exist([flist(i).name '\OSZICAR'],'file')
+            [E(i)]=OSZICAR_Read([flist(i).name '\OSZICAR']);
+        end
+    end
+    [Emax, I] = max([E.total]);
+    name = [name sprintf('_img%d_%3.3f',I, Emax)];
 end
-vaspfile = paths.input(slash_index(end)+1:end);
-if strcmp(vaspfile,'CONTCAR') || strcmp(vaspfile,'POSCAR')
-    name = [name '.xsd'];
-elseif strcmp(vaspfile,'XDATCAR')
-    name = [name '.xtd'];
-end
-paths.output = [paths.input(1:slash_index(end)) name];
-%% Read and write VASP config
-[mol_data] = VASP_Config_Read(paths.input);
+paths.output = [paths.input(1:slash_index(end)) name '.xtd'];
 
-if ndims(mol_data.positions) == 2 %#ok<ISMAT>
-    XSD_Write(paths.output,mol_data)
-elseif ndims(mol_data.positions) == 3
-    XTD_Write(paths.output,mol_data,10)
-end
-%%%%
+%% Read and write VASP config
+XTD_Write(paths.output,mol_data,10)
+
 
 end
 

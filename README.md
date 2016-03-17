@@ -22,3 +22,7 @@ TO DO:
   1. create NEB input
   2. read vibrational frequency vector.
   3. create vibration animation
+
+Acknowledgements:
+These codes are improved, and built based on the original code written by previous people in the vlachos group:
+Dr. Stamatakis, Dr. Salciccioli, Dr. Edie, Dr. Christiansen, Dr. Vorotnikov

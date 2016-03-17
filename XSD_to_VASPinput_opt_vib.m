@@ -9,7 +9,8 @@ function XSD_to_VASPinput_opt_vib
 %       1) paths
 %       2) input parameters 
 %   Output:
-%       Creates VASP input
+%       Creates VASP input. create temp for JA calculation, create qsub
+%       file for squidward
 %
 %   TODO: NEB input
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
@@ -20,7 +21,7 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'C:\Users\Gu\Desktop\Batches\3-15\';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\3-16\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
 paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
@@ -178,7 +179,8 @@ joblist_id = fopen ([input_fldr 'temp'],'w');
 for i=1:length(flist)
     paths.xsd_input = flist(i).name;
     XSD_to_VASPinput(paths,input)
-    path = flist(i).name(strfind(flist(i).name,'\\')+2:end-4);
+    slash_index = strfind(flist(i).name,'\');
+    path = flist(i).name(slash_index(end)+1:end-4);
     path = strrep(path,'\','/');
     fprintf(joblist_id,['./' path newline]);
 end
