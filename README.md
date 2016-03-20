@@ -22,6 +22,7 @@ TO DO:
   1. create NEB input
   2. create Lattice constant calculations
   3. XYZ read and write
+  4. Implement error handling
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
