@@ -23,6 +23,7 @@ TO DO:
   2. create Lattice constant calculations
   3. XYZ read and write
   4. Implement error handling
+  5. Squidward compatibility 
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
