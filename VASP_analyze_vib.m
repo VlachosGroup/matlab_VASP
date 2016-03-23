@@ -21,7 +21,7 @@ function VASP_analyze_vib
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find OUTCAR including those in subfolders
-input_fldr = 'C:\Users\Gu\Desktop\Checking\3-17\test\';
+input_fldr = 'C:\Users\Gu\Desktop\Checking\3-18\';
 option = 3;
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %% Initialize

@@ -17,7 +17,7 @@
 %
 % 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
-input_fldr = 'C:\Users\Gu\Desktop\Batches\3-16\';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\3-18\';
 metal = 'Pt';
 dirname = 'switched';
 adjust = 0;

@@ -16,7 +16,7 @@ function VASP_to_XSD_XTD
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Desktop\Checking\3-7\H12PCOH_hcpA\';
+input_fldr = 'C:\Users\Gu\Desktop\Checking\3-23\';
 convert_CONTCAR = 0;
 convert_XDATCAR = 0;
 convert_POSCAR = 0;

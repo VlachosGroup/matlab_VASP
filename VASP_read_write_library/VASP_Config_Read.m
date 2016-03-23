@@ -98,5 +98,5 @@ elseif strcmp(StrWords{1}{1},'Direct') || strcmp(StrWords{1}{1},'Cartesian')
     
 end
 
-
+mol_data.lattice = 'direct';
 end
