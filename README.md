@@ -11,6 +11,7 @@ The main function include:
 * XSD material studio file read
 * XSD material studio file write
 * XTD material studio animation file write
+* xyz file read write
 
 The repository also include outside code:
 * grep
@@ -21,7 +22,6 @@ http://www.mathworks.com/matlabcentral/fileexchange/32226-recursive-directory-li
 TO DO:
   1. create NEB input
   2. create Lattice constant calculations
-  3. XYZ read and write
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
