@@ -22,6 +22,12 @@ http://www.mathworks.com/matlabcentral/fileexchange/32226-recursive-directory-li
 TO DO:
   1. create NEB input
   2. create Lattice constant calculations
+<<<<<<< HEAD
+=======
+  3. XYZ read and write
+  4. Implement error handling
+  5. Squidward compatibility 
+>>>>>>> origin/master
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:

@@ -16,10 +16,10 @@ function VASP_to_XSD_XTD
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Desktop\Checking\3-23\';
+input_fldr = 'C:\Users\Gu\Desktop\Research\Data\MuSiC\sample POSCAR\';
 convert_CONTCAR = 0;
 convert_XDATCAR = 0;
-convert_POSCAR = 0;
+convert_POSCAR = 1;
 convert_NEB = 1;
 %%% if turned on, will print energy if OSZICAR is found
 % For NEB, image with highest energy will be printed out
