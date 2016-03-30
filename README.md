@@ -29,6 +29,8 @@ TO DO:
   3. Implement error handling
   4. Squidward compatibility 
 
+- Update VASP_Config_Read to handle different POSCAR formats
+
 >>>>>>> origin/master
 
 Acknowledgements:
