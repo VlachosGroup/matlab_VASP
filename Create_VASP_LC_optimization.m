@@ -207,7 +207,7 @@ POSCAR_Write([output_path 'POSCAR'],mol_data)
 elements = mol_data.unique_elements;
 if any(strcmp(elements,'Ru')); elements = 'Ru_pv'; end
 if any(strcmp(elements,'Rh')); elements = 'Rh_pv'; end
-POTCAR_Write(paths.potcar,output_path,mol_data.unique_elements)
+POTCAR_Write(paths.potcar,output_path, elements)
 
 %%% Write INCAR
 INCAR_Write(output_path,input.INCAR)
