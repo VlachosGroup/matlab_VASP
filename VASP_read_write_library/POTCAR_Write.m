@@ -2,7 +2,9 @@ function POTCAR_Write(potenfldr,outfldr,element)
 % Written by Geun Ho Gu 30-Dec-2015. University of Delaware.
 % Write POTCAR
 %% use system command to concatenate files. Knows windows and unix, need more writing for mac.
-if ispc
+if ischar(element) % meaning it's one element
+    copyfile([potenfldr element '\POTCAR'], [outfldr 'POTCAR']);
+elseif ispc
     command = 'copy ';
     for i = 1:length(element)
         command = [command '"' potenfldr element{i} '\POTCAR"+']; %#ok<AGROW>

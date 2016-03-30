@@ -10,10 +10,6 @@ outfldr = [paths.xsd_input(1:end-4) '\'];
 for i=1:size(mol_data.positions,1)
     if strcmp(mol_data.chemical_symbols{i},'H,2')
         mol_data.chemical_symbols{i} = 'H';
-    elseif strcmp(mol_data.chemical_symbols{i},'Ru')
-        mol_data.chemical_symbols{i} = 'Ru_pv';
-    elseif strcmp(mol_data.chemical_symbols{i},'Rh')
-        mol_data.chemical_symbols{i} = 'Rh_pv';
     end
 end
 
@@ -76,8 +72,13 @@ mkdir(outfldr);
 %%% write POSCAR
 POSCAR_Write([outfldr 'POSCAR'],mol_data)
 
+
 %%% write POTCARs
-POTCAR_Write(paths.potcar,outfldr,mol_data.unique_elements)
+% check for better potential
+elements = mol_data.unique_elements;
+if any(strcmp(elements,'Ru')); elements{strcmp(elements,'Ru')} = 'Ru_pv'; end
+if any(strcmp(elements,'Rh')); elements{strcmp(elements,'Rh')} = 'Rh_pv'; end
+POTCAR_Write(paths.potcar,outfldr,elements)
 
 %%% Write INCAR
 INCAR_Write(outfldr,input.INCAR)

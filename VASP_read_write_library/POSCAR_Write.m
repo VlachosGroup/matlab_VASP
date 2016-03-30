@@ -15,7 +15,7 @@ if isfield(mol_data, 'lattice')
     end
 end
 % sort by the elements for a concise POSCAR format
-[~, ~, ib] = unique(mol_data.chemical_symbols);
+[mol_data.unique_elements, ~, ib] = unique(mol_data.chemical_symbols);
 [~, I] = sort(ib);
 mol_data.chemical_symbols = mol_data.chemical_symbols(I);
 mol_data.positions = mol_data.positions(I,:);
