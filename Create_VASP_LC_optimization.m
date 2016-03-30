@@ -52,7 +52,7 @@ input.INCAR.LWAVE     = '.FALSE.';
 input.INCAR.LCHARG    = '.FALSE.';
 input.INCAR.LVTOT     = '.FALSE.';
 input.INCAR.PREC      = 'high';
-input.INCAR.EDIFF     = '1e-6';
+input.INCAR.EDIFF     = '1e-8';
 input.INCAR.ISPIN     = 2;
 input.INCAR.NSW      = 1000;
 input.INCAR.ISIF      = 6;
@@ -61,7 +61,7 @@ input.INCAR.NFREE    = 10;
 input.INCAR.POTIM    = 0.35;
 input.INCAR.EDIFFG   = -0.005;
 % Kpoints
-input.kpoints = [15 15 1];
+input.kpoints = [15 15 15];
 % functional choice. Also copies 
 switch functional
     case 'PBE'
