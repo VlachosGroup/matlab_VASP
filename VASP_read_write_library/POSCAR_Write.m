@@ -5,7 +5,7 @@ function POSCAR_Write(flname,mol_data)
 newline = char(10);
 fidout = fopen(flname,'w');
 slash_index = regexp(flname,'\');
-name = flname(slash_index(end-1)+1:slash_index(end)-1);
+name = flname(slash_index(end-1)+1:slash_index(end)-1);         % Gives an error if the flname does not have 2 or more \'s
 fprintf(fidout,[name newline]);
 fprintf(fidout,['    1.00000000' newline]);
 % convert to direct
