@@ -23,9 +23,7 @@ TO DO:
   1. create NEB input
   2. Implement error handling
   3. Squidward compatibility 
-  4. create Lattice constant calculations
-  5. Implement error handling
-  6. Update VASP_Config_Read to handle different POSCAR formats
+  4. Update VASP_Config_Read to handle different POSCAR formats
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
