@@ -13,7 +13,7 @@ The main function include:
 * XTD material studio animation file write
 * xyz file read write
 
-The repository also include outside code:
+The repository also includes outside code:
 * grep
 http://www.mathworks.com/matlabcentral/fileexchange/9647-grep--a-pedestrian--very-fast-grep-utility
 * rdir
@@ -21,17 +21,11 @@ http://www.mathworks.com/matlabcentral/fileexchange/32226-recursive-directory-li
 
 TO DO:
   1. create NEB input
-<<<<<<< HEAD
   2. Implement error handling
   3. Squidward compatibility 
-=======
-  2. create Lattice constant calculations
-  3. Implement error handling
-  4. Squidward compatibility 
-
-- Update VASP_Config_Read to handle different POSCAR formats
-
->>>>>>> origin/master
+  4. create Lattice constant calculations
+  5. Implement error handling
+  6. Update VASP_Config_Read to handle different POSCAR formats
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
