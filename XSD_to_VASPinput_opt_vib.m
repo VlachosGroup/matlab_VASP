@@ -21,22 +21,30 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'C:\Users\Gu\Desktop\Checking\3-29\';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\3-30\davood\Gas\rPW86-vdW-DF2\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
 paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
-
+% paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potential\pw91\';
+% kernel path for vdW-DF dispersion correction
+paths.kernel = 'C:\Users\Gu\Desktop\Research\Data\MATLAB_library\VASP\vdw_kernel.bindat';
 % Here, you can either use the preset choices I made here, or specify input
 % parameters yourself (see preset parameters section)
 
 %%% functional choice
-% PBE, PBE-D3, RPBE, RPBE-D3
+% INCAR presets are available for functional below
+% PBE, PBE-D3, optPBE-vdW-DF, RPBE, RPBE-D3, revPBE, revPBE-D3, revPBE-vdW-DF, PBEsol, PBEsol-D3, PW91, AM05, optB88-vdW-DF, optB86b-vdW-DF, rPW86-vdW-DF2
 functional = 'PBE-D3';
 
 %%% electronic optimization preset choice
 % surf_low  : for fast surface calc convergence
 % gas       : for gas phae calculation. Turns on spin
 elec_opt = 'surf_low';
+%%% Gas specific option
+% H2. Singlet state specification
+% input.INCAR.NUPDOWN = 0;
+% O2. Triplet state specification
+% input.INCAR.NUPDOWN = 2;
 
 %%% Calculator choice
 % geometric     : ibrion 2 geometric optimizer
@@ -76,12 +84,53 @@ switch functional
     case 'PBE-D3'
         input.INCAR.LVDW = '.TRUE.';
         input.INCAR.VDW_VERSION = 3;
+    case 'optPBE-vdW-DF'
+        input.INCAR.GGA = 'OR';
+        input.INCAR.LUSE_VDW = '.TRUE.';
+        input.INCAR.AGGAC = 0.0000;
     case 'RPBE'
         input.INCAR.GGA = 'RP';
     case 'RPBE-D3'
         input.INCAR.LVDW = '.TRUE.';
         input.INCAR.VDW_VERSION = 3;
         input.INCAR.GGA = 'RP';
+    case 'revPBE'
+        input.INCAR.GGA = 'RE';
+    case 'revPBE-D3'
+        input.INCAR.LVDW = '.TRUE.';
+        input.INCAR.VDW_VERSION = 3;
+        input.INCAR.GGA = 'RE';
+    case 'revPBE-vdW-DF'
+        input.INCAR.GGA = 'RE';
+        input.INCAR.LUSE_VDW = '.TRUE.';
+        input.INCAR.AGGAC = 0.0000;
+    case 'PBEsol'
+        input.INCAR.GGA = 'PS';
+    case 'PBEsol-D3'
+        input.INCAR.LVDW = '.TRUE.';
+        input.INCAR.VDW_VERSION = 3;
+        input.INCAR.GGA = 'PS';
+    case 'PW91'
+        input.INCAR.GGA = '91';
+    case 'AM05'
+        input.INCAR.GGA = 'AM';
+    case 'optB88-vdW-DF'
+        input.INCAR.GGA = 'BO';
+        input.INCAR.PARAM1 = 0.1833333333;
+        input.INCAR.PARAM2 = 0.2200000000;
+        input.INCAR.LUSE_VDW = '.TRUE.';
+        input.INCAR.AGGAC = 0.0000;
+    case 'optB86b-vdW-DF'
+        input.INCAR.GGA = 'MK';
+        input.INCAR.PARAM1 = 0.1234;
+        input.INCAR.PARAM2 = 1.0000;
+        input.INCAR.LUSE_VDW = '.TRUE.';
+        input.INCAR.AGGAC = 0.0000;
+    case 'rPW86-vdW-DF2'
+        input.INCAR.GGA = 'ML';
+        input.INCAR.Zab_vdW = -1.8867;
+        input.INCAR.LUSE_VDW = '.TRUE.';
+        input.INCAR.AGGAC = 0.0000;
 end
 % electronic relaxation
 % surf_low  : for fast surface calc convergence
@@ -148,7 +197,7 @@ switch input.bader
         input.INCAR.NGYF = 192;
         input.INCAR.NGZF = 448;
 end
-% 
+% NEB 
 % input.INCAR.LCLIMB = '.TRUE.';
 % input.INCAR.ICHAINA = 0;
 % input.INCAR.ICHAINA = nimages;
@@ -183,6 +232,10 @@ for i=1:length(flist)
     path = flist(i).name(slash_index(end)+1:end-4);
     path = strrep(path,'\','/');
     fprintf(joblist_id,['./' path newline]);
+    % copy kernel if vdW dispersion is used
+    if any(strcmp(functional,{'optPBE-vdW','revPBE-vdW','optB88-vdW','optB86b-vdW','rPW86-DF2'}))
+    copyfile(paths.kernel,output_path);
+    end
 end
 fclose(joblist_id);
 end
