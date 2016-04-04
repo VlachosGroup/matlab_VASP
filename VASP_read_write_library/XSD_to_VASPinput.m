@@ -69,6 +69,13 @@ end
 
 %% write VASP input
 mkdir(outfldr);  
+%%% Sort mol_data
+[mol_data.unique_elements, ~, ib] = unique(mol_data.chemical_symbols);
+[~, I] = sort(ib);
+mol_data.chemical_symbols = mol_data.chemical_symbols(I);
+mol_data.positions = mol_data.positions(I,:);
+mol_data.freeze = mol_data.freeze(I);
+
 %%% write POSCAR
 POSCAR_Write([outfldr 'POSCAR'],mol_data)
 

@@ -21,7 +21,7 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'C:\Users\Gu\Desktop\Batches\3-30\davood\Gas\rPW86-vdW-DF2\';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\4-4\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
 paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
@@ -66,7 +66,15 @@ input.bader = 0;
 
 %%% number of frozen layer
 % all_surf : freeze all the surface atom
-input.nfreeze = 2;
+input.nfreeze = 3;
+
+%%% If you are having convergence issue,
+% 3 parameter below changes quadratic mixing to linear mixing
+%input.INCAR.BMIX = 0.000001
+%input.INCAR.WC = 100.000000
+%input.INCAR.AMIX = 0.100000
+% Also, try Algo = Normal which only use Davidson to converge.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% %%%%%%%%%%%%%%%%%%%%%%%%% Preset Parameters %%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% INCAR parameters
