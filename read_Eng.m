@@ -24,6 +24,7 @@ if input_fldr(end) ~= '\'; input_fldr(end+1) = '\'; end
 %%% Add the location of the matlab script as path
 addpath([paths.mfile 'VASP_read_write_library\']);
 addpath([paths.mfile 'etc_library\grep04apr06\']); % need this for OSZICAR
+addpath([paths.mfile 'etc_library\rdir\']); % need this for OSZICAR
 %%% find all OSZICAR
 flist = rdir([input_fldr '\**\OSZICAR']);
 %%% Read
