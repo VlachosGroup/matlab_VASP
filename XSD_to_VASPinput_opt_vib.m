@@ -21,7 +21,7 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'C:\Users\Gu\Desktop\Batches\4-4\';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\4-25\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
 paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
@@ -66,7 +66,7 @@ input.bader = 0;
 
 %%% number of frozen layer
 % all_surf : freeze all the surface atom
-input.nfreeze = 3;
+input.nfreeze = 2;
 
 %%% If you are having convergence issue,
 % 3 parameter below changes quadratic mixing to linear mixing
@@ -237,7 +237,7 @@ for i=1:length(flist)
     paths.xsd_input = flist(i).name;
     XSD_to_VASPinput(paths,input)
     slash_index = strfind(flist(i).name,'\');
-    path = flist(i).name(slash_index(end)+1:end-4);
+    path = flist(i).name(length(input_fldr)+1:end-4);
     path = strrep(path,'\','/');
     fprintf(joblist_id,['./' path newline]);
     % copy kernel if vdW dispersion is used

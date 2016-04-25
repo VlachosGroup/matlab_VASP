@@ -7,7 +7,12 @@ fidout = fopen(flname,'w');
 slash_index = regexp(flname,'\');
 name = flname(slash_index(end-1)+1:slash_index(end)-1);         % Gives an error if the flname does not have 2 or more \'s
 fprintf(fidout,[name newline]);
-fprintf(fidout,['    1.00000000' newline]);
+if isfield(mol_data,'scaling_factor')
+    fprintf(fidout,['    ' num2str(mol_data.scaling_factor) newline]);
+    mol_data.cell = mol_data.cell./mol_data.scaling_factor;
+else
+    fprintf(fidout,['    1.00000000' newline]);
+end
 % convert to direct
 if isfield(mol_data, 'lattice')
     if strcmp(mol_data.lattice,'cartesian');

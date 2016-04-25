@@ -13,7 +13,7 @@
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Documents\Materials Studio Projects\GA+LSR Files\Documents\Group Additivity\2-3-get_group\';
+input_fldr = 'C:\Users\Gu\Desktop\Checking\4-13\TotalEnergies\';
 %% Initialize
 %%% Add the location of the matlab script as path
 paths.mfile = [fileparts(which([mfilename '.m'])) '\'];

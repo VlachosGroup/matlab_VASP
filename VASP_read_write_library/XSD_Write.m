@@ -323,6 +323,10 @@ for i = 1:NAtoms
     tmpstr = sprintf('%10.16f,',mol_data.positions(i,:));
     NewAtom.setAttribute('XYZ',tmpstr(1:end-1));
     NewAtom.setAttribute('Components',mol_data.chemical_symbols{i});
+    if isfield(mol_data,'charge') && mol_data.charge(i) ~= 0;
+        NewAtom.setAttribute('BallSize','25');
+        NewAtom.setAttribute('Charge',num2str(mol_data.charge(i)));
+    end
     IdentMappng.appendChild(NewAtom);
 end
 
@@ -390,6 +394,7 @@ if strcmpi(in1,'C') || ...
         strcmpi(in1,'H') || ...
         strcmpi(in1,'O') || ...
         strcmpi(in1,'S') || ...
+        strcmpi(in1,'p') || ...
         strcmpi(in1,'N');
     out1 = 'Ball and Stick';
 end
