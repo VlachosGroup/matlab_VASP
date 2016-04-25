@@ -1,6 +1,8 @@
 # matlab_VASP
 Repository contains VASP and materials studio related functions in VASP_read_write_library:
 
+For documentaion on individual functions, please see the Wiki.
+
 The repository includes outside code:
 * grep
 http://www.mathworks.com/matlabcentral/fileexchange/9647-grep--a-pedestrian--very-fast-grep-utility
