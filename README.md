@@ -11,9 +11,7 @@ http://www.mathworks.com/matlabcentral/fileexchange/32226-recursive-directory-li
 
 TO DO:
   1. create NEB input
-  2. Implement error handling
-  3. Squidward compatibility 
-  4. Update VASP_Config_Read to handle different POSCAR formats
+  2. Implement error handling - throw an error if pseudopotential folder is not found
 
 Acknowledgements:
 These codes are improved, and built based on the original code written by previous people in the vlachos group:
