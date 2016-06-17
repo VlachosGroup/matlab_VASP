@@ -9,6 +9,11 @@ end
 % in the main script
 % grep two line important line
 [~, P] = grep('-Q -s', {'F=', 'RMM'}, paths);
+if numel(P.lcount) == 0;
+    warning('File(%s): No electronic structure convergence iteration.',paths)
+    E = [];
+    return
+end
 textLine = P.match{P.lcount(1)};
 StrWords = textscan(textLine,'%s');
 E.total = str2double(StrWords{1}{5});

@@ -18,14 +18,14 @@ function VASP_Outcritic_to_XSD
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'D:\checking\4-20\CpCpCdM\';
+input_fldr = 'C:\Users\Gu\Desktop\Checking\6-8\CpCpCM1\';
 %%% bond critical point property is printed in charge of the an fake atom
 %%% and you can choose what properties is to be written:
-F_BCP = 3; 
+% F_BCP = 3; 
 % 1 = Electronic density
 % 2 = Laplacian
 % 3 = Ellipticity
-gas = 0;
+% 4 = make 3 files with ED, Lap, and e.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initialize
 %%% Add the location of the matlab script as path
@@ -35,6 +35,8 @@ addpath([paths.mfile 'VASP_read_write_library\']);
 addpath([paths.mfile 'etc_library\rdir\']);
 addpath([paths.mfile 'etc_library\grep04apr06\']);
 
+%% Metal
+metal = {'Pt','Pd'};
 %% Convert
 flist = rdir([input_fldr '\**\CONTCAR']);
 for i=1:length(flist)
@@ -45,9 +47,12 @@ for i=1:length(flist)
     %%% Read VASP config
     [mol_data] = VASP_Config_Read(paths.input);
     %%% Read Outcritic
-    [BCP] = Outcritic_Read([paths.input(1:end-7) 'Outcritic']);
+    [BCP] = Outcritic_Read([paths.input(1:end-7) 'BCP.outcritic']);
+    if isempty(BCP)
+        continue
+    end
     %%% remove Pt-Pt bonds
-    if gas == 0;
+    if ~isempty(intersect(mol_data.unique_elements,metal))
         % find metal atom
         [~, I]=sort(mol_data.positions(:,3));
         metal_element = mol_data.chemical_symbols{I(1)};
@@ -62,24 +67,31 @@ for i=1:length(flist)
             end
         end
     end
-    %%% Write BCP into mol_data
-    mol_data.unique_elements{end+1} = 'P';
-    mol_data.charge = zeros(size(mol_data.positions,1),1);
-    for j=1:length(BCP)
-        mol_data.chemical_symbols{end+1} = 'P';
-        mol_data.positions(end+1,:) = BCP(j).positions;
-        % write BCP property
-        switch F_BCP
-            case 1
-                mol_data.charge(end+1) = BCP(j).ED;
-            case 2
-                mol_data.charge(end+1) = BCP(j).LAP;
-            case 3
-                mol_data.charge(end+1) = BCP(j).ellipticity;
-        end
-    end
+    %%% Write BCP into mol_data and write xsd
     
-    %%% Write mol_data
+    for F_BCP =1:3
+        mol_data_bcp = mol_data;
+        mol_data_bcp.unique_elements{end+1} = 'P';
+        mol_data_bcp.charge = zeros(size(mol_data_bcp.positions,1),1);
+        for j=1:length(BCP)
+            mol_data_bcp.chemical_symbols{end+1} = 'P';
+            mol_data_bcp.positions(end+1,:) = BCP(j).positions;
+            % write BCP property
+            switch F_BCP
+                case 1
+                    mol_data_bcp.charge(end+1) = BCP(j).ED;
+                    ffname = [name(1:end-4) '_ED' name(end-3:end)];
+                case 2
+                    mol_data_bcp.charge(end+1) = BCP(j).LAP;
+                    ffname = [name(1:end-4) '_Lap' name(end-3:end)];
+                case 3
+                    mol_data_bcp.charge(end+1) = BCP(j).ellipticity;
+                    ffname = [name(1:end-4) '_Ellip' name(end-3:end)];
+            end
+        end
+        %%% Write mol_data
+        XSD_Write(ffname,mol_data_bcp)
+    end
     XSD_Write(name,mol_data)
 end
 

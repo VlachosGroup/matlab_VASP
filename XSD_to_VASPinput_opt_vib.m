@@ -21,7 +21,7 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'C:\Users\Gu\Desktop\Batches\4-25\';
+input_fldr = 'D:\batch\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
 paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
@@ -34,7 +34,7 @@ paths.kernel = 'C:\Users\Gu\Desktop\Research\Data\MATLAB_library\VASP\vdw_kernel
 %%% functional choice
 % INCAR presets are available for functional below
 % PBE, PBE-D3, optPBE-vdW-DF, RPBE, RPBE-D3, revPBE, revPBE-D3, revPBE-vdW-DF, PBEsol, PBEsol-D3, PW91, AM05, optB88-vdW-DF, optB86b-vdW-DF, rPW86-vdW-DF2
-functional = 'PBE-D3';
+functional = 'PBE';
 
 %%% electronic optimization preset choice
 % surf_low  : for fast surface calc convergence
@@ -58,15 +58,15 @@ calculator = 'geometric';
 spin = 'auto';
 
 %%% speed parameter
-input.INCAR.NPAR = 2;
-input.ncores = 20;
+input.INCAR.NPAR = 1;
+input.ncores = 16;
 
 %%% bader analysis
 input.bader = 0;
 
 %%% number of frozen layer
 % all_surf : freeze all the surface atom
-input.nfreeze = 2;
+input.nfreeze = 'all_surf';
 
 %%% If you are having convergence issue,
 % 3 parameter below changes quadratic mixing to linear mixing
@@ -166,7 +166,7 @@ switch elec_opt
     case 'surf_low'
         input.INCAR.EDIFF     = '1e-4';
         input.INCAR.SIGMA     = 0.1;
-        input.kpoints = [3 3 1];
+        input.kpoints = [1 1 1];
     case 'gas'
         % over rides ispin
         input.INCAR.EDIFF     = '1e-6';
@@ -179,11 +179,11 @@ end
 switch calculator
     case 'geometric'
         input.INCAR.NSW      = 1000;
-        input.INCAR.ISIF      = 2;
+        input.INCAR.ISIF     = 2;
         input.INCAR.IBRION   = 1;
         input.INCAR.NFREE    = 2;
-        input.INCAR.POTIM    = 0.2;
-        input.INCAR.EDIFFG   = -0.04;
+        input.INCAR.POTIM    = 0.1;
+        input.INCAR.EDIFFG   = -0.10;
     case 'vibrational'
         % over-rides ediff, nfreeze
         input.INCAR.EDIFF    = '1e-6';

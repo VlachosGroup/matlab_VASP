@@ -12,6 +12,7 @@ fidconf = fopen(flpath);
 fgetl(fidconf); eofstat = feof(fidconf); 
 if eofstat == 1;
     warning('%s is empty.',flpath);
+    mol_data = [];
     return
 end
 % Second line gives the scaling factor for the unit cell
