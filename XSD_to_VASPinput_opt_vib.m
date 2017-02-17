@@ -21,10 +21,11 @@ input.INCAR.author = 'Geun Ho Gu';
 %%% path set up
 % script find all xsd file - including files within all the subflolders -
 % in input_fldr
-input_fldr = 'D:\batch\';
+input_fldr = 'C:\Users\Gu\Desktop\Batches\2-17\';
 % laptop
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\potpaw_PBE.52';
-paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
+% paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potpaw_PBE.52\';
+paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\Tools\VASP\potential\pbe54';
 % paths.potcar = 'C:\Users\Gu\Desktop\Research\Data\VASP\potential\pw91\';
 % kernel path for vdW-DF dispersion correction
 paths.kernel = 'C:\Users\Gu\Desktop\Research\Data\MATLAB_library\VASP\vdw_kernel.bindat';
@@ -34,7 +35,7 @@ paths.kernel = 'C:\Users\Gu\Desktop\Research\Data\MATLAB_library\VASP\vdw_kernel
 %%% functional choice
 % INCAR presets are available for functional below
 % PBE, PBE-D3, optPBE-vdW-DF, RPBE, RPBE-D3, revPBE, revPBE-D3, revPBE-vdW-DF, PBEsol, PBEsol-D3, PW91, AM05, optB88-vdW-DF, optB86b-vdW-DF, rPW86-vdW-DF2
-functional = 'PBE';
+functional = 'PBE-D3';
 
 %%% electronic optimization preset choice
 % surf_low  : for fast surface calc convergence
@@ -66,7 +67,7 @@ input.bader = 0;
 
 %%% number of frozen layer
 % all_surf : freeze all the surface atom
-input.nfreeze = 'all_surf';
+input.nfreeze = 2;
 
 %%% If you are having convergence issue,
 % 3 parameter below changes quadratic mixing to linear mixing
@@ -173,6 +174,7 @@ switch elec_opt
         input.INCAR.SIGMA     = 0.01;
         input.INCAR.ISPIN     = 2;
         input.kpoints = [1 1 1];
+        input.nfreeze = 0;
 end
 
 % calcualtor set up
@@ -183,7 +185,7 @@ switch calculator
         input.INCAR.IBRION   = 1;
         input.INCAR.NFREE    = 2;
         input.INCAR.POTIM    = 0.1;
-        input.INCAR.EDIFFG   = -0.10;
+        input.INCAR.EDIFFG   = -0.075;
     case 'vibrational'
         % over-rides ediff, nfreeze
         input.INCAR.EDIFF    = '1e-6';

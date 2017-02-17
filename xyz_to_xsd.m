@@ -16,7 +16,7 @@ function xyz_to_xsd
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Documents\Materials Studio Projects\MuSic Files\Documents\Ethanol\';
+input_fldr = 'C:\Users\Gu\Desktop\check\';
 % basis vector
 cell = [0 8.53305 0;
         7.3898 -4.2665 0;

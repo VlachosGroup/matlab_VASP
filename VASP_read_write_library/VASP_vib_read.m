@@ -30,7 +30,7 @@ for j=1:length(Vib)
 end
 fprintf('\n');
 %% Make animations
-[mol_data] = VASP_Config_Read([fldrpath 'CONTCAR']);
+[mol_data] = VASP_Config_Read([fldrpath 'POSCAR']);
 original_positions = mol_data.positions;
 mol_data.positions = zeros(nframe,size(mol_data.positions,1),3);
 for i=1:length(Vib)

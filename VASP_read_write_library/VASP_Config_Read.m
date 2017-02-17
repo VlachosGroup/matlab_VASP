@@ -57,10 +57,12 @@ if strcmp(StrWords{1}{1},'Selective')
         mol_data.positions(i,1) = str2num(StrWords{1}{1}); %#ok<ST2NM>
         mol_data.positions(i,2) = str2num(StrWords{1}{2}); %#ok<ST2NM>
         mol_data.positions(i,3) = str2num(StrWords{1}{3}); %#ok<ST2NM>
-        if strcmp(StrWords{1}{4},'T')
-            mol_data.freeze(i) = 0;
-        else
-            mol_data.freeze(i) = 1;
+        if length(StrWords{1}) > 3
+            if strcmp(StrWords{1}{4},'T')
+                mol_data.freeze(i) = 0;
+            else
+                mol_data.freeze(i) = 1;
+            end
         end
     end
     if cartesian == 1;

@@ -21,8 +21,8 @@ function VASP_analyze_vib
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find OUTCAR including those in subfolders
-input_fldr = 'C:\Users\Gu\Desktop\Checking\3-18\';
-option = 3;
+input_fldr = 'C:\Users\Gu\Desktop\check\';
+option = 2;
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %% Initialize
 %%% Add the location of the matlab script as path

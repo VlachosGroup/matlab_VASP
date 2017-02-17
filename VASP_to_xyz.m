@@ -13,7 +13,7 @@ function VASP_to_xyz
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%% User Input %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %%% path set up
 % script find all VASP files - including files within all the subflolders 
-input_fldr = 'C:\Users\Gu\Desktop\Checking\3-3\out_stableC-OH\';
+input_fldr = 'C:\Users\Gu\Desktop\Research\Data\People\Angie\COSMO\';
 convert_CONTCAR = 1;
 convert_POSCAR = 0;
 %%% if turned on, will print energy if OSZICAR is found
